@@ -17,20 +17,19 @@ class BusinessesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 115
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
-            
-            self.businesses = businesses
-            if let businesses = businesses {
-                self.businesses = businesses
-            }
-            self.tableView.reloadData()
-        })
+        let uiSearchBar = UISearchBar()
+        uiSearchBar.placeholder = "Search Yelp!!!"
+        uiSearchBar.delegate = self
+        navigationItem.titleView = uiSearchBar
         
+        doSearch(searchTerm: "Restaurants")
         /* Example of Yelp search with more search options specified
          Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
          self.businesses = businesses
@@ -41,7 +40,17 @@ class BusinessesViewController: UIViewController {
          }
          }
          */
-        
+    }
+    
+    @objc private func doSearch(searchTerm: String) {
+        Business.searchWithTerm(term: searchTerm, completion: { (businesses: [Business]?, error: Error?) -> Void in
+            
+            self.businesses = businesses
+            if let businesses = businesses {
+                self.businesses = businesses
+            }
+            self.tableView.reloadData()
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,6 +85,14 @@ extension BusinessesViewController: UITableViewDataSource, UITableViewDelegate {
         let business = businesses[indexPath.row]
         cell.business = business
         return cell
+    }
+}
+
+extension BusinessesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self)//, selector: #selector(doSearch(searchTerm:)), object: nil)
+        self.perform(#selector(doSearch(searchTerm:)), with: searchText, afterDelay: 0.4)
+        // doSearch(searchTerm: searchText)
     }
 }
 
