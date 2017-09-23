@@ -132,7 +132,14 @@
                             <constraint firstItem="rTW-6e-Bae" firstAttribute="top" secondItem="XhR-oz-92f" secondAttribute="top" id="sYu-he-oAk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Yelp" id="oTu-UB-3eV"/>
+                    <navigationItem key="navigationItem" title="Yelp" id="oTu-UB-3eV">
+                        <barButtonItem key="leftBarButtonItem" title="Filter" id="dCd-vT-JUh">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="x5X-bU-KkH" kind="presentation" id="ndm-Ho-fT0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="rTW-6e-Bae" id="H0c-nJ-pjq"/>
                     </connections>
@@ -140,6 +147,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgb-4b-F1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2127.1999999999998" y="357.57121439280365"/>
+        </scene>
+        <!--Filter-->
+        <scene sceneID="QNI-3k-shd">
+            <objects>
+                <viewController id="bLo-vw-cbK" customClass="FiltersViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Cc-yi-CRE"/>
+                        <viewControllerLayoutGuide type="bottom" id="qZh-G1-EfG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="e0G-Ow-siX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="py4-pW-xcl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="switchCell" id="cFk-6L-ZMQ" customClass="SwitchCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cFk-6L-ZMQ" id="AP0-bN-JO0">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbM-ey-jWt">
+                                                    <rect key="frame" x="8" y="11" width="302" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VR4-Ym-Syy">
+                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VR4-Ym-Syy" firstAttribute="leading" secondItem="lbM-ey-jWt" secondAttribute="trailing" constant="8" id="EmG-ad-Gcu"/>
+                                                <constraint firstItem="lbM-ey-jWt" firstAttribute="leading" secondItem="AP0-bN-JO0" secondAttribute="leading" constant="8" id="NZK-SL-P4h"/>
+                                                <constraint firstAttribute="trailing" secondItem="VR4-Ym-Syy" secondAttribute="trailing" constant="8" id="QA0-KB-7rf"/>
+                                                <constraint firstItem="lbM-ey-jWt" firstAttribute="centerY" secondItem="AP0-bN-JO0" secondAttribute="centerY" id="hUY-zS-i8p"/>
+                                                <constraint firstItem="VR4-Ym-Syy" firstAttribute="centerY" secondItem="AP0-bN-JO0" secondAttribute="centerY" id="pAc-Pe-q1G"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="onSwitch" destination="VR4-Ym-Syy" id="I8C-ed-zBo"/>
+                                            <outlet property="switchLabel" destination="lbM-ey-jWt" id="Vnt-xN-ooV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="py4-pW-xcl" firstAttribute="top" secondItem="e0G-Ow-siX" secondAttribute="top" id="70Z-vp-gpg"/>
+                            <constraint firstItem="qZh-G1-EfG" firstAttribute="top" secondItem="py4-pW-xcl" secondAttribute="bottom" id="RBi-CD-DsC"/>
+                            <constraint firstAttribute="trailing" secondItem="py4-pW-xcl" secondAttribute="trailing" id="lH5-vX-O0u"/>
+                            <constraint firstItem="py4-pW-xcl" firstAttribute="leading" secondItem="e0G-Ow-siX" secondAttribute="leading" id="oLv-Jb-c0H"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Filter" id="uzp-Cg-DNP">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="8y2-AJ-LvC">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="onCancelButton:" destination="bLo-vw-cbK" id="IAM-1X-Qam"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="9ye-7n-JsK">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="onSearchButton:" destination="bLo-vw-cbK" id="EY6-U0-YVJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="py4-pW-xcl" id="aGF-Nj-8EJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lmD-Cm-ynq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3856.8000000000002" y="357.57121439280365"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3dW-gQ-pd7">
@@ -159,6 +245,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KKK-N1-Vir" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1420" y="358"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="geE-UD-22E">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x5X-bU-KkH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="7I9-dK-0AP">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.82745098039215681" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bLo-vw-cbK" kind="relationship" relationship="rootViewController" id="KbB-ch-wNU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cId-Tz-Eds" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3036" y="369"/>
         </scene>
     </scenes>
 </document>
