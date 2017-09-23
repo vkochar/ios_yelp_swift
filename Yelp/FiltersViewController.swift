@@ -8,10 +8,18 @@
 
 import UIKit
 
-class FiltersViewController: UIViewController {
+@objc protocol FiltersViewControllerDelegate {
+    func filtersViewController(_ filtersViewController: FiltersViewController, didUpdateFilters filters:[String: String])
+}
 
+class FiltersViewController: UIViewController, SwitchCellDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    weak var delegate: FiltersViewControllerDelegate?
+    
     var categories: [[String: String]]!
+    var switchStates = [Int:Bool]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +29,7 @@ class FiltersViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,17 +41,15 @@ class FiltersViewController: UIViewController {
     
     @IBAction func onSearchButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+        delegate?.filtersViewController(self, didUpdateFilters: ["": ""])
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func switchCell(_ switchCell: SwitchCell, didChangeValue value: Bool) {
+        let indexPath = tableView.indexPath(for: switchCell)!
+        switchStates[indexPath.row] = value
     }
-    */
-
+    
+    
 }
 
 extension FiltersViewController: UITableViewDataSource, UITableViewDelegate {
@@ -57,7 +63,8 @@ extension FiltersViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let switchCell = tableView.dequeueReusableCell(withIdentifier: "switchCell") as! SwitchCell
-        switchCell.setFilterName(name: categories[indexPath.row]["name"])
+        switchCell.setFilter(name: categories[indexPath.row]["name"], isOn: switchStates[indexPath.row] ?? false)
+        switchCell.delegate = self
         return switchCell
     }
 }

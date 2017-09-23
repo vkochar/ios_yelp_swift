@@ -9,10 +9,16 @@
 import UIKit
 import Foundation
 
+@objc protocol SwitchCellDelegate {
+    func switchCell(_ switchCell: SwitchCell, didChangeValue value: Bool)
+}
+
 class SwitchCell: UITableViewCell {
- 
+    
     @IBOutlet weak var onSwitch: UISwitch!
     @IBOutlet weak var switchLabel: UILabel!
+    
+    weak var delegate: SwitchCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +30,13 @@ class SwitchCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setFilterName(name: String?) {
+    func setFilter(name: String?, isOn: Bool) {
         switchLabel.text = name
+        onSwitch.isOn = isOn
+    }
+    
+    @IBAction func onSwitchChanged(_ sender: Any) {
+        delegate?.switchCell(self, didChangeValue: onSwitch.isOn)
     }
 }
+
