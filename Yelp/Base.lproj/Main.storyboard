@@ -172,13 +172,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbM-ey-jWt">
-                                                    <rect key="frame" x="8" y="11" width="302" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="290" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VR4-Ym-Syy">
-                                                    <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                    <rect key="frame" x="306" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="onSwitchChanged:" destination="cFk-6L-ZMQ" eventType="valueChanged" id="r96-Bg-uvm"/>
                                                     </connections>
@@ -187,7 +187,7 @@
                                             <constraints>
                                                 <constraint firstItem="VR4-Ym-Syy" firstAttribute="leading" secondItem="lbM-ey-jWt" secondAttribute="trailing" constant="8" id="EmG-ad-Gcu"/>
                                                 <constraint firstItem="lbM-ey-jWt" firstAttribute="leading" secondItem="AP0-bN-JO0" secondAttribute="leading" constant="8" id="NZK-SL-P4h"/>
-                                                <constraint firstAttribute="trailing" secondItem="VR4-Ym-Syy" secondAttribute="trailing" constant="8" id="QA0-KB-7rf"/>
+                                                <constraint firstAttribute="trailing" secondItem="VR4-Ym-Syy" secondAttribute="trailing" constant="20" id="QA0-KB-7rf"/>
                                                 <constraint firstItem="lbM-ey-jWt" firstAttribute="centerY" secondItem="AP0-bN-JO0" secondAttribute="centerY" id="hUY-zS-i8p"/>
                                                 <constraint firstItem="VR4-Ym-Syy" firstAttribute="centerY" secondItem="AP0-bN-JO0" secondAttribute="centerY" id="pAc-Pe-q1G"/>
                                             </constraints>
@@ -195,6 +195,75 @@
                                         <connections>
                                             <outlet property="onSwitch" destination="VR4-Ym-Syy" id="I8C-ed-zBo"/>
                                             <outlet property="switchLabel" destination="lbM-ey-jWt" id="Vnt-xN-ooV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="checkCell" rowHeight="70" id="FeG-Gr-xHz" customClass="CheckCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FeG-Gr-xHz" id="ArE-X7-Mba">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgm-19-heE">
+                                                    <rect key="frame" x="8" y="24" width="315" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAx-Ex-eSh">
+                                                    <rect key="frame" x="331" y="22" width="24" height="24"/>
+                                                    <color key="tintColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" image="radio_unchecked"/>
+                                                    <connections>
+                                                        <action selector="onCheckedChange:" destination="FeG-Gr-xHz" eventType="touchUpInside" id="wtA-Yh-XMl"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PAx-Ex-eSh" firstAttribute="leading" secondItem="Fgm-19-heE" secondAttribute="trailing" constant="8" id="65G-pG-RLL"/>
+                                                <constraint firstAttribute="trailing" secondItem="PAx-Ex-eSh" secondAttribute="trailing" constant="20" id="69S-Tp-6hK"/>
+                                                <constraint firstItem="Fgm-19-heE" firstAttribute="leading" secondItem="ArE-X7-Mba" secondAttribute="leading" constant="8" id="XH5-In-akP"/>
+                                                <constraint firstItem="PAx-Ex-eSh" firstAttribute="centerY" secondItem="ArE-X7-Mba" secondAttribute="centerY" id="piQ-v0-K6R"/>
+                                                <constraint firstItem="Fgm-19-heE" firstAttribute="centerY" secondItem="ArE-X7-Mba" secondAttribute="centerY" id="wb3-h2-bg5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkLabel" destination="Fgm-19-heE" id="X2N-Jq-1ND"/>
+                                            <outlet property="checkView" destination="PAx-Ex-eSh" id="DQC-Ki-2w4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dropdownCell" rowHeight="58" id="e9J-3q-65N" customClass="DropdownCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="142" width="375" height="58"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e9J-3q-65N" id="Imq-Mu-KCT">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="57.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nf3-wM-XLe">
+                                                    <rect key="frame" x="331" y="17" width="24" height="24"/>
+                                                    <state key="normal" image="down_arrow"/>
+                                                    <connections>
+                                                        <action selector="onTapDropdownButton:" destination="e9J-3q-65N" eventType="touchUpInside" id="JAg-4m-wAO"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTN-kS-8iG">
+                                                    <rect key="frame" x="8" y="18.5" width="315" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="nf3-wM-XLe" secondAttribute="trailing" constant="20" id="DST-hJ-ozk"/>
+                                                <constraint firstItem="zTN-kS-8iG" firstAttribute="centerY" secondItem="Imq-Mu-KCT" secondAttribute="centerY" id="I7p-3E-Ugl"/>
+                                                <constraint firstItem="nf3-wM-XLe" firstAttribute="centerY" secondItem="Imq-Mu-KCT" secondAttribute="centerY" id="O4y-OG-fDa"/>
+                                                <constraint firstItem="zTN-kS-8iG" firstAttribute="leading" secondItem="Imq-Mu-KCT" secondAttribute="leading" constant="8" id="qwA-cV-6CO"/>
+                                                <constraint firstItem="nf3-wM-XLe" firstAttribute="leading" secondItem="zTN-kS-8iG" secondAttribute="trailing" constant="8" id="uIB-vb-szH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dropdownLabel" destination="zTN-kS-8iG" id="Tyk-bR-sJg"/>
+                                            <outlet property="dropdownView" destination="nf3-wM-XLe" id="B7o-jU-k4y"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -215,7 +284,7 @@
                                 <action selector="onCancelButton:" destination="bLo-vw-cbK" id="IAM-1X-Qam"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="9ye-7n-JsK">
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="9ye-7n-JsK">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onSearchButton:" destination="bLo-vw-cbK" id="EY6-U0-YVJ"/>
@@ -272,4 +341,8 @@
             <point key="canvasLocation" x="3036" y="369"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="down_arrow" width="24" height="24"/>
+        <image name="radio_unchecked" width="24" height="24"/>
+    </resources>
 </document>

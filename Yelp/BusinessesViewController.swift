@@ -13,6 +13,7 @@ class BusinessesViewController: UIViewController, FiltersViewControllerDelegate 
     @IBOutlet weak var tableView: UITableView!
     
     var businesses: [Business]!
+    var switchStates = [Int:[Int:Bool]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,17 +30,7 @@ class BusinessesViewController: UIViewController, FiltersViewControllerDelegate 
         uiSearchBar.delegate = self
         navigationItem.titleView = uiSearchBar
         
-        doSearch(searchTerm: "Restaurants")
-        /* Example of Yelp search with more search options specified
-         Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
-         self.businesses = businesses
-         
-         for business in businesses {
-         print(business.name!)
-         print(business.address!)
-         }
-         }
-         */
+        doSearch(searchTerm: "")
     }
     
     @objc private func doSearch(searchTerm: String) {
@@ -53,8 +44,23 @@ class BusinessesViewController: UIViewController, FiltersViewControllerDelegate 
         })
     }
     
-    func filtersViewController(_ filtersViewController: FiltersViewController, didUpdateFilters filters: [String : String]) {
-        print("test")
+    func filtersViewController(_ filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject], switchStates: [Int:[Int:Bool]]) {
+        
+        self.switchStates = switchStates
+        
+        let searchText = (navigationItem.titleView as? UISearchBar)?.text ?? ""
+        
+        let categories = filters["categories"] as? [String]
+        let sortMode = filters["sort"] as? YelpSortMode
+        let deals = filters["deals"] as? Bool
+        let distance = filters["distance"] as? Int
+        
+        Business.searchWithTerm(term: searchText, sort: sortMode, categories: categories, deals: deals, radius: distance) {
+            (businesses: [Business]!, error: Error!) -> Void in
+            self.businesses = businesses
+            
+            self.tableView.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,6 +75,7 @@ class BusinessesViewController: UIViewController, FiltersViewControllerDelegate 
         let navigationViewController = segue.destination as! UINavigationController
         let vc = navigationViewController.topViewController as! FiltersViewController
         vc.delegate = self
+        vc.switchStates = self.switchStates
      }
 }
 

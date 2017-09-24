@@ -30,9 +30,10 @@ class SwitchCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setFilter(name: String?, isOn: Bool) {
+    func setFilter(name: String?, isOn: Bool?) {
         switchLabel.text = name
-        onSwitch.isOn = isOn
+        onSwitch.isOn = isOn ?? false
+        onSwitch.isHidden = false
     }
     
     @IBAction func onSwitchChanged(_ sender: Any) {
