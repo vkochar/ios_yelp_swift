@@ -12,8 +12,15 @@ class BusinessesViewController: UIViewController, FiltersViewControllerDelegate 
     
     @IBOutlet weak var tableView: UITableView!
     
+    var total: Int?
     var businesses: [Business]!
     var switchStates = [Int:[Int:Bool]]()
+    var isLoading = false
+    
+    var categories: [String]?
+    var sortMode: YelpSortMode?
+    var deals: Bool?
+    var distance: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +41,29 @@ class BusinessesViewController: UIViewController, FiltersViewControllerDelegate 
     }
     
     @objc private func doSearch(searchTerm: String) {
-        Business.searchWithTerm(term: searchTerm, completion: { (businesses: [Business]?, error: Error?) -> Void in
-            
-            self.businesses = businesses
+        Business.searchWithTerm(term: searchTerm, completion: { (businesses: [Business]?, total: Int?, error: Error?) -> Void in
             if let businesses = businesses {
                 self.businesses = businesses
             }
+            self.total = total
             self.tableView.reloadData()
+            print("total is \(total!)")
         })
+    }
+    
+    private func loadPage(offset: Int?) {
+        let searchText = (navigationItem.titleView as? UISearchBar)?.text ?? ""
+    
+        Business.loadPage(term: searchText, sort: self.sortMode, categories: self.categories, deals: self.deals, radius: self.distance, offset: offset) { (businesses: [Business]?, total: Int?, error: Error?) -> Void in
+            
+            if let businesses = businesses {
+                self.businesses.append(contentsOf: businesses)
+            }
+            self.total = total
+            self.tableView.reloadData()
+            self.isLoading = false
+        }
+            
     }
     
     func filtersViewController(_ filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject], switchStates: [Int:[Int:Bool]]) {
@@ -50,15 +72,15 @@ class BusinessesViewController: UIViewController, FiltersViewControllerDelegate 
         
         let searchText = (navigationItem.titleView as? UISearchBar)?.text ?? ""
         
-        let categories = filters["categories"] as? [String]
-        let sortMode = filters["sort"] as? YelpSortMode
-        let deals = filters["deals"] as? Bool
-        let distance = filters["distance"] as? Int
+        self.categories = filters["categories"] as? [String]
+        self.sortMode = filters["sort"] as? YelpSortMode
+        self.deals = filters["deals"] as? Bool
+        self.distance = filters["distance"] as? Int
         
-        Business.searchWithTerm(term: searchText, sort: sortMode, categories: categories, deals: deals, radius: distance) {
-            (businesses: [Business]!, error: Error!) -> Void in
+        Business.searchWithTerm(term: searchText, sort: self.sortMode, categories: self.categories, deals: self.deals, radius: self.distance) {
+            (businesses: [Business]!, total: Int?, error: Error!) -> Void in
             self.businesses = businesses
-            
+            self.total = total
             self.tableView.reloadData()
         }
     }
@@ -93,6 +115,12 @@ extension BusinessesViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "businessCell") as! BusinessCell
         let business = businesses[indexPath.row]
         cell.business = business
+        
+        if ((indexPath.row >= businesses.count - 1) && indexPath.row < total!  && !isLoading) {
+            isLoading = true
+            loadPage(offset: 20)
+        }
+        
         return cell
     }
 }
