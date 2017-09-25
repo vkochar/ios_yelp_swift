@@ -119,6 +119,7 @@
                                             <outlet property="priceIndicatorLabel" destination="qiw-hF-Gbt" id="blW-eX-oKn"/>
                                             <outlet property="reviewsImageView" destination="FxK-3V-rvX" id="n1O-3r-kYV"/>
                                             <outlet property="reviewsLabel" destination="uZw-gO-goi" id="a7m-Oc-fXP"/>
+                                            <segue destination="UYD-5f-Ghe" kind="show" id="5o2-an-B2H"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -318,7 +319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lmD-Cm-ynq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3856.8000000000002" y="357.57121439280365"/>
+            <point key="canvasLocation" x="3062" y="1198"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3dW-gQ-pd7">
@@ -377,7 +378,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xOQ-ld-IJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3375.1999999999998" y="-353.07346326836586"/>
+            <point key="canvasLocation" x="3062" y="-469"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="geE-UD-22E">
@@ -399,7 +400,91 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cId-Tz-Eds" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3036" y="369"/>
+            <point key="canvasLocation" x="2127" y="1198"/>
+        </scene>
+        <!--Business Detail View Controller-->
+        <scene sceneID="3xT-it-amd">
+            <objects>
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="UYD-5f-Ghe" customClass="BusinessDetailViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tmA-yp-9CB"/>
+                        <viewControllerLayoutGuide type="bottom" id="BWt-Fx-ear"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xt7-Ou-kEG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyk-PE-Lg9">
+                                <rect key="frame" x="8" y="72" width="359" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Rs2-WZ-P5f">
+                                <rect key="frame" x="0.0" y="101" width="375" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="vVs-11-RlT"/>
+                                </constraints>
+                            </mapView>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76l-gu-XRP">
+                                <rect key="frame" x="8" y="289" width="359" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vkV-tS-oqp">
+                                <rect key="frame" x="0.0" y="318" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="iOT-If-TcX"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZ1-c2-G74">
+                                <rect key="frame" x="0.0" y="356" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="C7n-od-vab"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MZ-Rc-QdJ">
+                                <rect key="frame" x="8" y="327" width="359" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wZ1-c2-G74" firstAttribute="top" secondItem="3MZ-Rc-QdJ" secondAttribute="bottom" constant="8" id="3h7-nF-DHS"/>
+                            <constraint firstAttribute="trailing" secondItem="wZ1-c2-G74" secondAttribute="trailing" id="8aq-El-NeC"/>
+                            <constraint firstItem="vkV-tS-oqp" firstAttribute="leading" secondItem="Xt7-Ou-kEG" secondAttribute="leading" id="9BH-Sy-TKR"/>
+                            <constraint firstItem="Rs2-WZ-P5f" firstAttribute="leading" secondItem="Xt7-Ou-kEG" secondAttribute="leading" id="9Pm-PX-M1V"/>
+                            <constraint firstItem="pyk-PE-Lg9" firstAttribute="leading" secondItem="Xt7-Ou-kEG" secondAttribute="leading" constant="8" id="CLT-fb-zaR"/>
+                            <constraint firstItem="pyk-PE-Lg9" firstAttribute="top" secondItem="tmA-yp-9CB" secondAttribute="bottom" constant="8" id="GBb-qy-jvb"/>
+                            <constraint firstAttribute="trailing" secondItem="pyk-PE-Lg9" secondAttribute="trailing" constant="8" id="IZ7-hI-wOA"/>
+                            <constraint firstItem="76l-gu-XRP" firstAttribute="top" secondItem="Rs2-WZ-P5f" secondAttribute="bottom" constant="8" id="PuJ-oL-1fq"/>
+                            <constraint firstItem="vkV-tS-oqp" firstAttribute="top" secondItem="76l-gu-XRP" secondAttribute="bottom" constant="8" id="SrI-Lo-9bN"/>
+                            <constraint firstAttribute="trailing" secondItem="3MZ-Rc-QdJ" secondAttribute="trailing" constant="8" id="WRs-lj-hK8"/>
+                            <constraint firstAttribute="trailing" secondItem="76l-gu-XRP" secondAttribute="trailing" constant="8" id="XUf-5d-Yp3"/>
+                            <constraint firstAttribute="trailing" secondItem="Rs2-WZ-P5f" secondAttribute="trailing" id="ccz-0e-Qmx"/>
+                            <constraint firstItem="Rs2-WZ-P5f" firstAttribute="top" secondItem="pyk-PE-Lg9" secondAttribute="bottom" constant="8" id="f4f-Iw-r6p"/>
+                            <constraint firstItem="wZ1-c2-G74" firstAttribute="leading" secondItem="Xt7-Ou-kEG" secondAttribute="leading" id="oW7-gH-Jy1"/>
+                            <constraint firstAttribute="trailing" secondItem="vkV-tS-oqp" secondAttribute="trailing" id="u7M-Xn-HE9"/>
+                            <constraint firstItem="3MZ-Rc-QdJ" firstAttribute="leading" secondItem="Xt7-Ou-kEG" secondAttribute="leading" constant="8" id="z0O-HJ-uZP"/>
+                            <constraint firstItem="76l-gu-XRP" firstAttribute="leading" secondItem="Xt7-Ou-kEG" secondAttribute="leading" constant="8" id="z2N-iG-ul3"/>
+                            <constraint firstItem="3MZ-Rc-QdJ" firstAttribute="top" secondItem="vkV-tS-oqp" secondAttribute="bottom" constant="8" id="zHq-sG-HYA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="76l-gu-XRP" id="aDr-zz-UEx"/>
+                        <outlet property="businessName" destination="pyk-PE-Lg9" id="HFX-wW-Zh4"/>
+                        <outlet property="mapView" destination="Rs2-WZ-P5f" id="yBx-Kx-eer"/>
+                        <outlet property="phoneLabel" destination="3MZ-Rc-QdJ" id="Ku4-Wl-7BU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xaA-uu-EK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3061.5999999999999" y="375.56221889055473"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h0T-cK-Ztc">
@@ -421,7 +506,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzj-AV-azN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2698" y="-353"/>
+            <point key="canvasLocation" x="2127" y="-469"/>
         </scene>
     </scenes>
     <resources>

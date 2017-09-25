@@ -18,9 +18,15 @@ class Business: NSObject {
     let reviewCount: NSNumber?
     let latitude: Double?
     let longitude: Double?
+    let website: String?
+    let phone: String?
     
     init(dictionary: NSDictionary) {
         name = dictionary["name"] as? String
+        
+        website = dictionary["url"] as? String
+        
+        phone = dictionary["phone"] as? String
         
         let imageURLString = dictionary["image_url"] as? String
         if imageURLString != nil {

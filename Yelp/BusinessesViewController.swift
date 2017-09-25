@@ -94,16 +94,27 @@ class BusinessesViewController: UIViewController, FiltersViewControllerDelegate 
     
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navigationViewController = segue.destination as! UINavigationController
+        let destination = segue.destination
         
-        let topViewControler = navigationViewController.topViewController
-        if (topViewControler is MapViewController) {
-            let vc = navigationViewController.topViewController as! MapViewController
-            vc.businesses = self.businesses
-        } else if (topViewControler is FiltersViewController) {
-            let vc = navigationViewController.topViewController as! FiltersViewController
-            vc.delegate = self
-            vc.switchStates = self.switchStates
+        if (destination is UINavigationController) {
+            let navigationViewController = destination as! UINavigationController
+            let topViewControler = navigationViewController.topViewController
+            if (topViewControler is MapViewController) {
+                let vc = navigationViewController.topViewController as! MapViewController
+                vc.businesses = self.businesses
+            } else if (topViewControler is FiltersViewController) {
+                let vc = navigationViewController.topViewController as! FiltersViewController
+                vc.delegate = self
+                vc.switchStates = self.switchStates
+            }
+        } else if (destination is BusinessDetailViewController) {
+            
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)!
+            let business = businesses[indexPath.row]
+            
+            let businessDetailViewController = destination as! BusinessDetailViewController
+            businessDetailViewController.business = business
         }
      }
 }
@@ -129,6 +140,10 @@ extension BusinessesViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
