@@ -20,9 +20,9 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Search results page
+- [x] Search results page
    - [x] Infinite scroll for restaurant results.
-   - [ ] Implement map view of restaurant results.
+   - [x] Implement map view of restaurant results.
 - [x] Filter page
    - [x] Implement a custom switch instead of the default UISwitch.
    - [x] Distance filter should expand as in the real Yelp app
@@ -31,6 +31,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
+- [x] Change color of text (time, carrier) in status bar.
 - [x] Debounce user input into the search bar. This would save on network calls.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):

@@ -139,6 +139,13 @@
                                 <segue destination="x5X-bU-KkH" kind="presentation" id="ndm-Ho-fT0"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title=" Map" id="Ih5-rR-vkd">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onSwapResultsViewMode:" destination="2xI-yr-O5N" id="kPc-jd-016"/>
+                                <segue destination="h49-K7-cV0" kind="presentation" id="Vgt-N1-sSS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="rTW-6e-Bae" id="H0c-nJ-pjq"/>
@@ -332,6 +339,46 @@
             </objects>
             <point key="canvasLocation" x="1420" y="358"/>
         </scene>
+        <!--Results-->
+        <scene sceneID="V5t-70-uVt">
+            <objects>
+                <viewController id="pCg-wp-4BG" customClass="MapViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Dl-Ci-fRs"/>
+                        <viewControllerLayoutGuide type="bottom" id="F48-Pl-nEb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9Ep-dA-fYC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kTt-hl-MYP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="F48-Pl-nEb" firstAttribute="top" secondItem="kTt-hl-MYP" secondAttribute="bottom" id="6JM-er-TLi"/>
+                            <constraint firstAttribute="trailing" secondItem="kTt-hl-MYP" secondAttribute="trailing" id="ZSl-fU-hnq"/>
+                            <constraint firstItem="kTt-hl-MYP" firstAttribute="leading" secondItem="9Ep-dA-fYC" secondAttribute="leading" id="rsq-CT-RlD"/>
+                            <constraint firstItem="kTt-hl-MYP" firstAttribute="top" secondItem="0Dl-Ci-fRs" secondAttribute="bottom" id="yip-TP-T1P"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Results" id="KoX-95-gxs">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="zcL-sg-vKk">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="didClickClose:" destination="pCg-wp-4BG" id="BBv-88-9rb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="kTt-hl-MYP" id="oCe-lZ-ME9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xOQ-ld-IJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3375.1999999999998" y="-353.07346326836586"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="geE-UD-22E">
             <objects>
@@ -353,6 +400,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cId-Tz-Eds" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3036" y="369"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="h0T-cK-Ztc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h49-K7-cV0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="hFT-RC-enb">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.87215721609999997" green="0.22430995109999999" blue="0.18045490980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pCg-wp-4BG" kind="relationship" relationship="rootViewController" id="YDH-1i-HMX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lzj-AV-azN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2698" y="-353"/>
         </scene>
     </scenes>
     <resources>

@@ -25,6 +25,7 @@
 		8B371A251F77597B003F42DA /* FilterModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B371A241F77597B003F42DA /* FilterModels.swift */; };
 		8B371A271F7830CB003F42DA /* CheckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B371A261F7830CB003F42DA /* CheckCell.swift */; };
 		8B371A291F783119003F42DA /* DropdownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B371A281F783119003F42DA /* DropdownCell.swift */; };
+		8B6DDA7B1F7897F300F5CBCC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6DDA7A1F7897F300F5CBCC /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		8B371A241F77597B003F42DA /* FilterModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModels.swift; sourceTree = "<group>"; };
 		8B371A261F7830CB003F42DA /* CheckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCell.swift; sourceTree = "<group>"; };
 		8B371A281F783119003F42DA /* DropdownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownCell.swift; sourceTree = "<group>"; };
+		8B6DDA7A1F7897F300F5CBCC /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9B128C050DE78660DE2A8E75 /* Pods-YelpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YelpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YelpTests/Pods-YelpTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA3C5CF4FD317D72ABE2AAC4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79C0AC126EDAA235847CEA2 /* Pods_Yelp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +174,7 @@
 			children = (
 				22AAAA9B1AEA1EC300A544AF /* BusinessesViewController.swift */,
 				8B371A201F75F465003F42DA /* FiltersViewController.swift */,
+				8B6DDA7A1F7897F300F5CBCC /* MapViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */,
 				8B371A1D1F74DE40003F42DA /* UIImageView+LoadAnimations.swift in Sources */,
 				8B371A1F1F75F243003F42DA /* SwitchCell.swift in Sources */,
+				8B6DDA7B1F7897F300F5CBCC /* MapViewController.swift in Sources */,
 				22AAAA991AEA0A9700A544AF /* Business.swift in Sources */,
 				8B371A271F7830CB003F42DA /* CheckCell.swift in Sources */,
 				222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */,
