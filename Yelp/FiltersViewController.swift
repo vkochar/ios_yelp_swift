@@ -87,8 +87,6 @@ class FiltersViewController: UIViewController, SwitchCellDelegate, CheckCellDele
         var swictchStatesForSection = switchStates[section] ?? [Int:Bool]()
         swictchStatesForSection[indexPath.row] = value
         switchStates[section] = swictchStatesForSection
-    
-        tableView.reloadSections(IndexSet(integer: indexPath.section), with: UITableViewRowAnimation.automatic)
     }
     
     func checkCell(_ checkCell: CheckCell, onTap isChecked: Bool) {

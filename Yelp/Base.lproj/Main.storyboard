@@ -171,29 +171,43 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbM-ey-jWt">
-                                                    <rect key="frame" x="8" y="11" width="290" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbM-ey-jWt">
+                                                    <rect key="frame" x="8" y="11" width="289" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VR4-Ym-Syy">
-                                                    <rect key="frame" x="306" y="6" width="51" height="31"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2q-2y-SGu" customClass="PWSwitch" customModule="PWSwitch">
+                                                    <rect key="frame" x="305" y="8" width="50" height="26"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="trackOffFillColor">
+                                                            <color key="value" red="0.92146831750869751" green="0.92162626981735229" blue="0.92145836353302002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="shouldFillOnPush" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="trackOnFillColor">
+                                                            <color key="value" red="0.87215721609999997" green="0.22430995109999999" blue="0.18045490980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="trackOnBorderColor">
+                                                            <color key="value" red="0.87215721609999997" green="0.22430995109999999" blue="0.18045490980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="onSwitchChanged:" destination="cFk-6L-ZMQ" eventType="valueChanged" id="r96-Bg-uvm"/>
+                                                        <action selector="onSwitchChanged:" destination="cFk-6L-ZMQ" eventType="valueChanged" id="81V-y0-zpI"/>
                                                     </connections>
-                                                </switch>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="VR4-Ym-Syy" firstAttribute="leading" secondItem="lbM-ey-jWt" secondAttribute="trailing" constant="8" id="EmG-ad-Gcu"/>
+                                                <constraint firstItem="N2q-2y-SGu" firstAttribute="centerY" secondItem="AP0-bN-JO0" secondAttribute="centerY" id="4WC-KE-MCt"/>
+                                                <constraint firstItem="N2q-2y-SGu" firstAttribute="leading" secondItem="lbM-ey-jWt" secondAttribute="trailing" constant="8" id="6Nb-T6-2gc"/>
+                                                <constraint firstAttribute="trailing" secondItem="N2q-2y-SGu" secondAttribute="trailing" constant="20" id="D5N-Zs-CXW"/>
                                                 <constraint firstItem="lbM-ey-jWt" firstAttribute="leading" secondItem="AP0-bN-JO0" secondAttribute="leading" constant="8" id="NZK-SL-P4h"/>
-                                                <constraint firstAttribute="trailing" secondItem="VR4-Ym-Syy" secondAttribute="trailing" constant="20" id="QA0-KB-7rf"/>
                                                 <constraint firstItem="lbM-ey-jWt" firstAttribute="centerY" secondItem="AP0-bN-JO0" secondAttribute="centerY" id="hUY-zS-i8p"/>
-                                                <constraint firstItem="VR4-Ym-Syy" firstAttribute="centerY" secondItem="AP0-bN-JO0" secondAttribute="centerY" id="pAc-Pe-q1G"/>
+                                                <constraint firstItem="lbM-ey-jWt" firstAttribute="centerY" secondItem="AP0-bN-JO0" secondAttribute="centerY" id="yI8-CL-puA"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="onSwitch" destination="VR4-Ym-Syy" id="I8C-ed-zBo"/>
+                                            <outlet property="onSwitch" destination="N2q-2y-SGu" id="xo4-zz-7WF"/>
                                             <outlet property="switchLabel" destination="lbM-ey-jWt" id="Vnt-xN-ooV"/>
                                         </connections>
                                     </tableViewCell>

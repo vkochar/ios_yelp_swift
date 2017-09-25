@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import PWSwitch
 
 @objc protocol SwitchCellDelegate {
     func switchCell(_ switchCell: SwitchCell, didChangeValue value: Bool)
@@ -15,7 +16,7 @@ import Foundation
 
 class SwitchCell: UITableViewCell {
     
-    @IBOutlet weak var onSwitch: UISwitch!
+    @IBOutlet weak var onSwitch: PWSwitch!
     @IBOutlet weak var switchLabel: UILabel!
     
     weak var delegate: SwitchCellDelegate?
@@ -32,12 +33,12 @@ class SwitchCell: UITableViewCell {
     
     func setFilter(name: String?, isOn: Bool?) {
         switchLabel.text = name
-        onSwitch.isOn = isOn ?? false
+        onSwitch.setOn(isOn ?? false, animated: true)
         onSwitch.isHidden = false
     }
     
     @IBAction func onSwitchChanged(_ sender: Any) {
-        delegate?.switchCell(self, didChangeValue: onSwitch.isOn)
+        delegate?.switchCell(self, didChangeValue: onSwitch.on)
     }
 }
 
